@@ -24,9 +24,12 @@ def import_data_from_filename(filename):
         if len(line) >= 2 and len(line) <= 4:
             input_data.append(float(line[0])) # append the first variable from the text
             output_data.append(float(line[-1])) # append the last variable from the text
-            
-   
-    return input_data, output_data #return both numpy arrays for plotting and such
+
+    Edot = int(filename[4:7])
+    N = float(filename[7:11])
+    Y = float(filename[12:-1])
+    
+    return input_data, output_data, Edot, N, Y #return both numpy arrays for plotting and such (and the variables for the input to the neural network)
 
 def get_all_filenames_in_directory(directory_name):
     # glob.glob() is a function that returns all the folders in a directory with a specific file format
@@ -58,8 +61,6 @@ def get_data_from_json(json_name):
     data_dictionary = json.load(json_file)
     json_file.close()
 
-    for file in data_dictionary.keys():
-        data_dictionary[file] = [ np.array(data_dictionary[file][0]), np.array(data_dictionary[file][1]) ]
 
     return data_dictionary
 
@@ -69,25 +70,13 @@ def find_minimum_length_data(data_dictionary):
 
 def find_maximum_minimum_input(data_dictionary):
     return max([min(data[0]) for data in data_dictionary.values()])
+    
+
 def find_minimum_maximum_input(data_dictionary):
     return min([max(data[0]) for data in data_dictionary.values()])
 
 
-class DeformationDataset(Dataset):
-    def __init__(self, database_dir):
-        if os.path.isfile(database_dir + ".json"):
-            self.creep_data_dictionary = get_data_from_json(database_dir + "-creep_time_depth.json")
-            self.surface_data_dictionary = get_data_from_json(database_dir + "-surface_r_z.json")
-        else:
-            self.creep_data_dictionary, _ = put_input_output_data_into_dictionary(database_dir + "/creep_time_depth")
-            self.surface_data_dictionary, _ = put_input_output_data_into_dictionary(database_dir + "/surface_r_z")
-        
-        self.keys = list(self.creep_data_dictionary.keys())
-
-    def __len__(self):
-        return len(list(self.creep_data_dictionary.keys()))
-
-    def __getitem__(self, idx):
-        return self.creep_data_dictionary[self.keys[idx]], self.surface_data_dictionary[self.keys[idx]]
-    
-
+def dataloader_tuples(creep_data_dict, surface_data_dict):
+    for curve_key in creep_data_dict.keys():
+        surface = surface_data_dict[curve_key]
+        creep = creep_data_dict[curve_key]
