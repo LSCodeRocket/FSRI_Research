@@ -2,6 +2,11 @@ import numpy as np
 import glob
 import json
 import os
+import scipy as sp
+
+
+polynomial_degree_approximation = 12
+input_number = 120
 
 def import_data_from_filename(filename):
     # Open file in "r"ead mode
@@ -25,9 +30,9 @@ def import_data_from_filename(filename):
             input_data.append(float(line[0])) # append the first variable from the text
             output_data.append(float(line[-1])) # append the last variable from the text
 
-    Edot = int(filename[4:7])
-    N = float(filename[7:11])
-    Y = float(filename[12:-1])
+    Edot = int(filename.split("_")[-1][4:6])
+    N = float(filename.split("_")[-1][7:11])
+    Y = float(filename.split("_")[-1][12:-4])
     
     return input_data, output_data, Edot, N, Y #return both numpy arrays for plotting and such (and the variables for the input to the neural network)
 
@@ -77,6 +82,20 @@ def find_minimum_maximum_input(data_dictionary):
 
 
 def dataloader_tuples(creep_data_dict, surface_data_dict):
+    output_data = []
     for curve_key in creep_data_dict.keys():
         surface = surface_data_dict[curve_key]
         creep = creep_data_dict[curve_key]
+
+        creep_fitted_coefficients = np.polyfit(creep[0], creep[1], polynomial_degree_approximation)
+
+        creep_func = lambda t: sum([ t**(M-n) * creep_fitted_coefficients[n] for n in range(polynomial_degree_approximation) ])
+
+
+        input_max = max(creep[0])
+        input_min = min(creep[0])
+
+        new_creep = [creep_func(x) for x in np.linspace(input_min, input_max, num=input_number)]
+        output_data.append((new_creep, surface[1]))
+
+    return output_data, input_number
