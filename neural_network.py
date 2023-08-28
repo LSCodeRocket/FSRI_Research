@@ -13,7 +13,11 @@ class NeuralNetwork(nn.Module):
             nn.SELU(),
             nn.Linear(100, 100),
             nn.SELU(),
-            nn.Linear(100, 90),
+            nn.Linear(100, 100),
+            nn.SELU(),
+            nn.Linear(100, 100),
+            nn.SELU(),
+            nn.Linear(100, 90)
         )
         print("Neural Network Created.")
 
@@ -29,7 +33,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     model.train()
     for batch, (X, y) in enumerate(dataloader):
         # Compute prediction and loss
-        X = torch.from_numpy(np.array(X).reshape(1, input_number)).float()
+        X = torch.from_numpy(np.array(X)).float()
         pred = model(X)
         loss = loss_fn(torch.Tensor(pred), torch.Tensor(y))
 
@@ -58,6 +62,7 @@ def test_loop(dataloader, model, loss_fn):
 
             X = torch.from_numpy(np.array(X).reshape(1, input_number)).float()
             pred = model(X)
+            print(loss_fn(torch.Tensor(pred), torch.Tensor(y)))
             test_loss += loss_fn(torch.Tensor(pred), torch.Tensor(y)).item()
 
     test_loss /= num_batches

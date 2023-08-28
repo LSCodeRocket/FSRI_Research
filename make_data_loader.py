@@ -105,6 +105,10 @@ def folder_to_dictionaries(directory_name):
 
 def dataloader_tuples(creep_data_dict, surface_data_dict):
     print("hard part begins")
+
+    input_min = find_maximum_minimum_input(creep_data_dict)
+    input_max = find_minimum_maximum_input(creep_data_dict)
+
     output_data = []
     for curve_key in creep_data_dict.keys():
         surface = surface_data_dict[curve_key]
@@ -113,10 +117,6 @@ def dataloader_tuples(creep_data_dict, surface_data_dict):
         creep_fitted_coefficients = np.polyfit(creep[0], creep[1], polynomial_degree_approximation)
 
         creep_func = lambda t: sum([ t**(polynomial_degree_approximation-n) * creep_fitted_coefficients[n] for n in range(polynomial_degree_approximation) ])
-
-
-        input_max = max(creep[0])
-        input_min = min(creep[0])
 
         new_creep = [creep_func(x) for x in np.linspace(input_min, input_max, num=input_number)]
         output_data.append((new_creep, surface[1]))
