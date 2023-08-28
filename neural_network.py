@@ -6,6 +6,7 @@ from make_data_loader import *
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
+        #make the layers of the NN
         self.linear_relu_stack = nn.Sequential(
             nn.Linear(input_number, 100),
             nn.SELU(),
@@ -21,11 +22,11 @@ class NeuralNetwork(nn.Module):
         )
         print("Neural Network Created.")
 
+    #forward propagation
     def forward(self, x):
         logits = self.linear_relu_stack(x)
         return logits
 
-# Initialize the loss function
 def train_loop(dataloader, model, loss_fn, optimizer):
     size = len(dataloader)
     # Set the model to training mode - important for batch normalization and dropout layers
