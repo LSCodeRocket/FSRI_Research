@@ -13,7 +13,7 @@ class NeuralNetwork(nn.Module):
             nn.SELU(),
             nn.Linear(100, 100),
             nn.SELU(),
-            nn.Linear(100, 1),
+            nn.Linear(100, 90),
         )
         print("Neural Network Created.")
 
