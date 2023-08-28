@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 learning_rate = 1e-2
+
 epochs = 150
 
 model = NeuralNetwork()
