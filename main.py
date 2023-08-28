@@ -28,4 +28,4 @@ print("Done!")
 
 
 plt.plot(np.array(list(range(len(loss)))), np.array(loss))
-plt.show()
+plt.savefig('output.png')
