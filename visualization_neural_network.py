@@ -6,6 +6,8 @@ import random
 import sys
 from progress.bar import Bar
 
+model_filename = "model.pth"
+
 creep_dict, surface_dict = folder_to_dictionaries(sys.argv[1])
 
 def display_creep_curves():
@@ -44,7 +46,7 @@ def display_creep_curves():
 
 
 def display_surface_curves():
-    model = torch.load("model_50nphl_4hl.pth")
+    model = torch.load(model_filename)
 
     keys = list(surface_dict.keys())
 
@@ -102,7 +104,7 @@ def display_surface_curves():
 
 
 def display_surface_creep_curves():
-    model = torch.load("model_50nphl_4hl.pth")
+    model = torch.load(model_filename)
 
     keys = list(surface_dict.keys())
 
@@ -177,7 +179,7 @@ def display_surface_creep_curves():
 
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
         axes[0].plot(positive_input, positive_x_output, color='blue')
-        fig.savefig(f"combination_curves/{keys[random_curve_id][:-4]}.png")
+        fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
         bar.next()
         plt.close()
     bar.finish()
