@@ -20,10 +20,10 @@ def import_data_from_filename(filename):
 
     # Split the file_text_raw by new line and then by space to prepare for data extraction
     file_text_lines = file_text_raw.split("\n")
-    file_text_variables = [line.replace("                   ","  ").replace("       ","  ").replace("    ","  ").split('  ')[1:] for line in file_text_lines]
+    file_text_variables = [line.replace("                   ","  ").replace("       ","  ").replace("    ","  ").replace("   ", "  ").replace("  ", " ").split('  ')[1:] for line in file_text_lines]
 
 
-    if len(file_text_variables[0]) == 0:
+    if len(file_text_variables[0]) <= 1:
         file_text_variables = [line.split(" ") for line in file_text_lines]
 
     input_data = [] # Define the input_data list for t or x values
