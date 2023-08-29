@@ -7,24 +7,27 @@ class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
         #make the layers of the NN
+        nphl = 50
         self.linear_relu_stack = nn.Sequential(
-            nn.Linear(input_number, 100),
-            nn.SELU(),
-            nn.Linear(100, 100),
-            nn.SELU(),
-            nn.Linear(100, 100),
-            nn.SELU(),
-            nn.Linear(100, 100),
-            nn.SELU(),
-            nn.Linear(100, 100),
-            nn.SELU(),
-            nn.Linear(100, 90)
+            nn.Linear(input_number, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, 90),
         )
         print("Neural Network Created.")
 
     #forward propagation
     def forward(self, x):
+        #print("x",x.size())
         logits = self.linear_relu_stack(x)
+        #print("logits",logits)
         return logits
 
 def train_loop(dataloader, model, loss_fn, optimizer):
@@ -44,7 +47,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
         optimizer.zero_grad()
 
         if batch % 100 == 0:
-            loss, current = loss.item(), (batch + 1) * len(X)
+            loss, current = loss.item(), (batch)+1*len(X)
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
 
 
@@ -63,7 +66,7 @@ def test_loop(dataloader, model, loss_fn):
 
             X = torch.from_numpy(np.array(X).reshape(1, input_number)).float()
             pred = model(X)
-            print(loss_fn(torch.Tensor(pred), torch.Tensor(y)))
+            loss_fn(torch.Tensor(pred), torch.Tensor(y))
             test_loss += loss_fn(torch.Tensor(pred), torch.Tensor(y)).item()
 
     test_loss /= num_batches

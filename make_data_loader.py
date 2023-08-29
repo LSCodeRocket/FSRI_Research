@@ -5,7 +5,7 @@ import os
 import scipy as sp
 
 
-polynomial_degree_approximation = 12
+polynomial_degree_approximation = 10
 input_number = 120
 
 def import_data_from_filename(filename):
@@ -20,8 +20,7 @@ def import_data_from_filename(filename):
 
     # Split the file_text_raw by new line and then by space to prepare for data extraction
     file_text_lines = file_text_raw.split("\n")
-    file_text_variables = [line.replace("                   ","  ").replace("       ","  ").replace("    ","  ").replace("   ", "  ").replace("  ", " ").split('  ')[1:] for line in file_text_lines]
-
+    file_text_variables = [line.replace("                   ","_").replace("       ","_").replace("    ","_").replace("   ", "_").replace("  ", "_").replace(" ", "_").split('_')[1:] for line in file_text_lines]
 
     if len(file_text_variables[0]) <= 1:
         file_text_variables = [line.split(" ") for line in file_text_lines]
