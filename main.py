@@ -9,7 +9,7 @@ import random
 
 
 learning_rate = 1e-4
-
+# Hello Steven
 epochs = 100
 
 #makes the neural network
