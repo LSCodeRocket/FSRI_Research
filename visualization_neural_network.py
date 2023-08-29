@@ -94,8 +94,8 @@ def display_surface_curves():
         plt.clf()
         plt.title(f"{keys[random_curve_id][:-4]}")
         plt.plot(full_input, full_output)
-        plt.plot(full_input, full_model)
-        plt.savefig(f"surface_curves/{keys[random_curve_id][:-4]}.png")
+        #plt.plot(full_input, full_model)
+        plt.savefig(f"pure_surface_curves/{keys[random_curve_id][:-4]}.png")
         bar.next()
     bar.finish()
 
