@@ -10,7 +10,7 @@ import random
 
 learning_rate = 1e-4
 
-epochs = 1000
+epochs = 10
 
 #makes the neural network
 model = NeuralNetwork()
@@ -52,14 +52,36 @@ plt.plot(np.array(list(range(len(loss)))), np.array(loss))
 plt.savefig('output.png')
 
 key = list(surface_dict.keys())[0]
-
 random_number = random.randint(0, len(surface_dict))
 
-plt.clf()
-plt.plot(np.logspace(0,np.log10(30), num=90),np.array(dataloader[random_number][1]), color="Orange")
-plt.plot(np.logspace(0,np.log10(30), num=90),model(torch.Tensor(dataloader[random_number][0])).detach().numpy(), color="Blue")
+
+
+positive_input = np.logspace(0,np.log10(30), num=90)
+negative_input = list(-positive_input)
+negative_input.reverse()
+
+full_input = np.array(negative_input + list(positive_input))
+print(full_input)
+
+positive_x_output = list(dataloader[random_number][1])
+negative_x_output = positive_x_output
+negative_x_output.reverse()
+
+full_output = np.array(negative_x_output + positive_x_output)
+print(full_output)
+
+positive_x_model = list(model(torch.Tensor(dataloader[random_number][0])).detach().numpy())
+negative_x_model = positive_x_model 
+negative_x_model.reverse()
+
+full_model = np.array(negative_x_model + positive_x_model)
+print(full_model)
+
+plt.plot(full_input, full_output, color="Orange")
+plt.plot(full_input, full_model, color="Blue")
 
 plt.savefig("comparison.png")
 
 for param in model.parameters():
-    print("Weights:" + str(param))
+    # print("Weights:" + str(param))
+    pass
