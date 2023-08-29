@@ -10,10 +10,11 @@ import random
 
 learning_rate = 1e-4
 
-epochs = 10
+epochs = 100000
 
 #makes the neural network
-model = NeuralNetwork()
+#model = NeuralNetwork()
+model = torch.load('model.pth')
 
 #takes the argument the user used to find the file
 creep_dict, surface_dict = folder_to_dictionaries(argv[1])
@@ -46,36 +47,42 @@ for t in range(epochs):
     loss.append(test_loop(testing_dataloader, model, loss_fn))
 print("Done!")
 
+torch.save(model, 'model.pth')
+
 #plot loss so we can make sure our error is actually decreasing
 plt.clf()
 plt.plot(np.array(list(range(len(loss)))), np.array(loss))
 plt.savefig('output.png')
+plt.clf()
 
-key = list(surface_dict.keys())[0]
 random_number = random.randint(0, len(surface_dict))
+key = list(surface_dict.keys())[random_number]
 
 
 
 positive_input = np.logspace(0,np.log10(30), num=90)
-negative_input = list(-positive_input)
-negative_input.reverse()
+negative_input = []
+for value in reversed(positive_input):
+    negative_input.append(-value)
 
 full_input = np.array(negative_input + list(positive_input))
-print(full_input)
+
 
 positive_x_output = list(dataloader[random_number][1])
-negative_x_output = positive_x_output
-negative_x_output.reverse()
+negative_x_output = []
+for value in reversed(positive_x_output):
+    negative_x_output.append(value)
 
 full_output = np.array(negative_x_output + positive_x_output)
-print(full_output)
+
 
 positive_x_model = list(model(torch.Tensor(dataloader[random_number][0])).detach().numpy())
-negative_x_model = positive_x_model 
-negative_x_model.reverse()
+negative_x_model = []
+for value in reversed(positive_x_model):
+    negative_x_model.append(value)
 
 full_model = np.array(negative_x_model + positive_x_model)
-print(full_model)
+
 
 plt.plot(full_input, full_output, color="Orange")
 plt.plot(full_input, full_model, color="Blue")

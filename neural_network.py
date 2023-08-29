@@ -7,9 +7,13 @@ class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
         #make the layers of the NN
-        nphl = 50
+        nphl = 100
         self.linear_relu_stack = nn.Sequential(
             nn.Linear(input_number, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
+            nn.LeakyReLU(),
+            nn.Linear(nphl, nphl),
             nn.LeakyReLU(),
             nn.Linear(nphl, nphl),
             nn.LeakyReLU(),
