@@ -46,6 +46,8 @@ for t in range(epochs):
     #train our NN on all training data
     train_loop(training_dataloader, model, loss_fn, optimizer)
     #store our loss values
+    
+    random.shuffle(training_dataloader)
     loss.append(test_loop(testing_dataloader, model, loss_fn))
 print("Done!")
 
