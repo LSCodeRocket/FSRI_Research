@@ -178,7 +178,7 @@ def display_surface_creep_curves():
 
 
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
-        axes[0].plot(positive_input, positive_x_output, color='blue')
+        axes[0].plot( positive_x_output, positive_input, color='blue')
         axes[0].title.set_text(keys[random_curve_id][:-4])
         fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
         bar.next()

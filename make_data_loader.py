@@ -147,7 +147,7 @@ def dataloader_tuples(creep_data_dict, surface_data_dict):
         creep = creep_data_dict[curve_key]
 
         #finds the coefficients in preperation to make a fitted curve
-        creep_fitted_coefficients = np.polyfit(creep[0], creep[1], polynomial_degree_approximation)
+        creep_fitted_coefficients = np.polyfit(creep[1], creep[0], polynomial_degree_approximation)
 
         #make function for fitted curve
         creep_func = lambda t: sum([ t**(polynomial_degree_approximation-n) * creep_fitted_coefficients[n] for n in range(polynomial_degree_approximation) ])
