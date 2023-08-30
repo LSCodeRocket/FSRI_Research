@@ -26,9 +26,11 @@ maximum_input = find_minimum_maximum_input(creep_dict)
 #prepares our data for NN training
 dataloader = dataloader_tuples(creep_dict, surface_dict)
 
+random.shuffle(dataloader)
+
 #seperates our training data and our test data to ensure our NN works for generalized data and not just the training data
-training_dataloader = dataloader[0:(len(dataloader) // 2)]
-testing_dataloader = dataloader[(len(dataloader) // 2 ) : -1]
+training_dataloader = dataloader[0:(4*len(dataloader) // 5)]
+testing_dataloader = dataloader[(4*len(dataloader) //5 ) : -1]
 
 #define loss function
 loss_fn = nn.MSELoss()
