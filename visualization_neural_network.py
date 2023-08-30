@@ -6,7 +6,7 @@ import random
 import sys
 from progress.bar import Bar
 
-model_filename = "model.pth"
+model_filename = "model_100nphl_6hl.pth"
 
 creep_dict, surface_dict = folder_to_dictionaries(sys.argv[1])
 
