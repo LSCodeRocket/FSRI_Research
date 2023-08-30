@@ -115,7 +115,7 @@ def display_surface_creep_curves():
 
     for i in range(int(sys.argv[2])):
 
-        random_curve_id = random.randint(0, len(keys))
+        random_curve_id = random.randint(0, len(keys)-1)
         surface_curve = surface_dict[keys[random_curve_id]]
 
         positive_input = list(np.logspace(0, np.log10(30), num=90))
@@ -180,7 +180,9 @@ def display_surface_creep_curves():
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
         axes[0].plot(positive_input, positive_x_output, color='blue')
         fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
+        plt.title(keys[random_curve_id])
         bar.next()
+        
         plt.close()
     bar.finish()
 
