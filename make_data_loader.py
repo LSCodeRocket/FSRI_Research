@@ -91,12 +91,12 @@ def find_minimum_length_data(data_dictionary):
 
 def find_maximum_minimum_input(data_dictionary):
     #finds the largest minimum of all graphs
-    return max([min(data[0]) for data in data_dictionary.values()])
+    return max([min(data[1]) for data in data_dictionary.values()])
     
 
 def find_minimum_maximum_input(data_dictionary):
     #finds the smallest maximum of all graphs
-    return min([max(data[0]) for data in data_dictionary.values()])
+    return min([max(data[1]) for data in data_dictionary.values()])
 
 def folder_to_dictionaries(directory_name):
     #print statement for checkpoints
