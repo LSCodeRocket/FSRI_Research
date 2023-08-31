@@ -7,18 +7,39 @@ class NeuralOperator(nn.Module):
     def __init__(self):
         super().__init__()
         #make the layers of the NN
-        neurons_per_hidden_layer = 100
-        hidden_layer_number = 6
+        self.neurons_per_hidden_layer = 100
+        self.hidden_layer_number = 6
+        self.hidden_neurons_in_kernel = 20
+        self.hidden_layers_in_kernel = 3
+        self.activation_function = nn.SELU()
 
-        internal_kernels = [nn.Linear(2, 1)]
-        print("Neural Network Created.")
+        self.kernels = [ [nn.Linear(self.neurons_per_hidden_layer, self.hidden_neurons_in_kernel)] for n in range((self.hidden_layer_number)) ]
+        for i in range(self.hidden_layer_number):
+            self.kernels[i] = self.kernels[i] + [nn.Linear(self.hidden_neurons_in_kernel, self.hidden_neurons_in_kernel) for j in range(self.hidden_layers_in_kernel)]
+            self.kernels[i] = self.kernels[i] + [nn.Linear(self.hidden_neurons_in_kernel, self.neurons_per_hidden_layer)]
+        
+        self.hidden_layers = [nn.Linear(self.neurons_per_hidden_layer, self.neurons_per_hidden_layer) for i in range(self.hidden_layer_number)]
+        self.input_layer = nn.Linear(input_number, self.neurons_per_hidden_layer)
+        self.output_layer = nn.Linear(self.neurons_per_hidden_layer, 90)
+        print("Neural Operator Created.")
 
     #forward propagation
     def forward(self, x):
-        #print("x",x.size())
-        logits = self.linear_relu_stack(x)
-        #print("logits",logits)
-        return logits
+        x = self.activation_function(self.input_layer(x))
+        for i in range(self.hidden_layer_number):
+            x_1 = self.hidden_layers[i](x)
+            
+            y = self.kernels[i][0](x)
+            for j in range(self.hidden_layers_in_kernel):
+                y = self.kernels[i][j+1](y)
+
+
+            x_2 = (1/input_number) * self.kernels[i][-1](y)
+
+            x = self.activation_function(x_1 + x_2)
+        
+        x = self.output_layer(x)
+        return x
 
 class NeuralNetwork(nn.Module):
     def __init__(self):

@@ -9,8 +9,6 @@ from progress.bar import Bar
 creep_filenames = glob.glob(sys.argv[1] + "/creep_time_depth/*.dat")
 surface_filenames = glob.glob(sys.argv[1] + "/surface_r_z/*.dat")
 
-
-
 polydeg = int(sys.argv[2])
 datapoints = int(sys.argv[3])
 
