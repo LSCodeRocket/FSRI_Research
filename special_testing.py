@@ -23,6 +23,7 @@ def display_comparison_graph():
     input_min = find_maximum_minimum_input(creep_dict)
     input_max = find_minimum_maximum_input(creep_dict)
 
+    max_parameter = int(sys.argv[2])
 
 
     for i in range(int(sys.argv[2])):
@@ -40,7 +41,7 @@ def display_comparison_graph():
         full_input = np.array(negative_input + list(positive_input))
 
         x = np.linspace(0, 1, num=len(creep[3]))
-        creep[3] = list(x+np.sin(10*x))
+        creep[3] = list(x+(i/max_parameter)*np.sin((10*i/max_parameter)*x+i/max_parameter))
 
         positive_x_network_model = list(model(torch.Tensor(creep[3])).detach().numpy())
         negative_x_network_model = []
