@@ -3,6 +3,23 @@ from torch import nn
 import numpy as np
 from make_data_loader import *
 
+class NeuralOperator(nn.Module):
+    def __init__(self):
+        super().__init__()
+        #make the layers of the NN
+        neurons_per_hidden_layer = 100
+        hidden_layer_number = 6
+
+        internal_kernels = [nn.Linear(2, 1)]
+        print("Neural Network Created.")
+
+    #forward propagation
+    def forward(self, x):
+        #print("x",x.size())
+        logits = self.linear_relu_stack(x)
+        #print("logits",logits)
+        return logits
+
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()

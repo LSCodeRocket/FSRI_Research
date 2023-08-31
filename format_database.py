@@ -61,7 +61,7 @@ for filename in surface_filenames:
     actual_file_lines = actual_file.readlines()
 
     split_actual_file_lines = [actual_file_line.split(" ") for actual_file_line in actual_file_lines]
-    float_lines = [[float(line[0].replace(" ", "")), float(line[1].replace(" ", ""))] for line in split_actual_file_lines]
+    float_lines = [[float(line[0].replace(" ", "")), 100*float(line[1].replace(" ", ""))] for line in split_actual_file_lines]
 
     surface_input_data = [data[0] for data in float_lines]
     surface_output_data = [data[1] for data in float_lines]
