@@ -11,8 +11,8 @@ learning_rate = 1e-4
 epochs = 10
 
 #makes the neural network
-#model = NeuralNetwork()
-model = torch.load('model.pth')
+model = NeuralNetwork()
+#model = torch.load('model.pth')
 
 #takes the argument the user used to find the file
 creep_dict, surface_dict = folder_to_dictionaries(argv[1])
@@ -94,3 +94,6 @@ plt.savefig("comparison.png")
 for param in model.parameters():
     # print("Weights:" + str(param))
     pass
+
+
+print(model(torch.Tensor(np.linspace(0, 100, num=120))))

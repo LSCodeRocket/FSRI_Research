@@ -10,19 +10,19 @@ class NeuralNetwork(nn.Module):
         nphl = 100
         self.linear_relu_stack = nn.Sequential(
             nn.Linear(input_number, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, nphl),
-            nn.LeakyReLU(),
+            nn.SELU(),
             nn.Linear(nphl, 90),
         )
         print("Neural Network Created.")
