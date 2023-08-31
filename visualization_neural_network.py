@@ -20,11 +20,9 @@ def display_creep_curves():
 
         random_curve_id = random.randint(0, len(keys))
         creep_curve = creep_dict[keys[random_curve_id]]
+        surface_curve = surface_dict[keys[random_curve_id]]
 
-        input_min = min(creep_curve[0])
-        input_max = max(creep_curve[0])
-
-        positive_input = np.linspace(input_min, input_max, num=len(creep_curve[0]))
+        positive_input = creep_curve[0] 
         negative_input = list(-positive_input)
         negative_input.reverse()
 
@@ -116,35 +114,25 @@ def display_surface_creep_curves():
     for i in range(int(sys.argv[2])):
 
         random_curve_id = random.randint(0, len(keys)-1)
-        surface_curve = surface_dict[keys[random_curve_id]]
 
-        positive_input = list(np.logspace(0, np.log10(30), num=90))
+        creep = creep_dict[keys[random_curve_id]]
+        surface = surface_dict[keys[random_curve_id]]
+
+        positive_input = list(surface[0])
         negative_input = []
         for value in reversed(positive_input):
             negative_input.append(-value)
 
         full_input = np.array(negative_input + list(positive_input))
 
-        positive_x_output = list(surface_curve[1])
+        positive_x_output = list(surface[1])
         negative_x_output = []
         for value in reversed(positive_x_output):
             negative_x_output.append(value)
 
         full_output = np.array(negative_x_output + positive_x_output)
 
-        creep_input_curve = creep_dict[keys[random_curve_id]][0]
-        creep_input = creep_dict[keys[random_curve_id]][1]
-        
-        creep_fitted_coefficients = np.polyfit(creep_input, creep_input_curve, deg=polynomial_degree_approximation)
-
-        #make function for fitted curve
-        creep_func = lambda t: sum([ t**(polynomial_degree_approximation-n) * creep_fitted_coefficients[n] for n in range(polynomial_degree_approximation) ])
-
-        #evaluate new curve at specific points across all new curves
-        new_creep = [creep_func(x) for x in np.linspace(input_min, input_max, num=input_number)]
-
-
-        positive_x_model = list(model(torch.Tensor(new_creep)).detach().numpy())
+        positive_x_model = list(model(torch.Tensor(creep[3])).detach().numpy())
         negative_x_model = []
         for value in reversed(positive_x_model):
             negative_x_model.append(value)
@@ -159,18 +147,13 @@ def display_surface_creep_curves():
         axes[1].plot(full_input, full_output, color='orange')
         axes[1].plot(full_input, full_model, color="seagreen")
 
-        creep_curve = creep_dict[keys[random_curve_id]]
-
-        input_min = min(creep_curve[1])
-        input_max = max(creep_curve[1])
-
-        positive_input = np.linspace(input_min, input_max, num=len(creep_curve[1]))
-        negative_input = list(-positive_input)
+        positive_input = list(creep[0])
+        negative_input = list(-np.array(positive_input))
         negative_input.reverse()
 
         full_input = np.array(negative_input + list(positive_input))
 
-        positive_x_output = list(creep_curve[0])
+        positive_x_output = list(creep[1])
         negative_x_output = positive_x_output
         negative_x_output.reverse()
 
@@ -178,8 +161,10 @@ def display_surface_creep_curves():
 
 
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
-        axes[0].plot( positive_input, positive_x_output, color='blue')
-        axes[0].plot( positive_input, [creep_func(n) for n in positive_input], color='red')
+        axes[0].plot( np.array(creep[0]), np.array(creep[1]), color='blue')
+        axes[0].plot( np.array(creep[2]), np.array(creep[3]), color='red')
+        axes[0].plot( np.array(creep[0]), np.array(creep[4]), color='salmon')
+
         axes[0].title.set_text(keys[random_curve_id][:-4])
         fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
         bar.next()
