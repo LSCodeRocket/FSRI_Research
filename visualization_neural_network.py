@@ -58,7 +58,7 @@ def display_surface_curves():
         random_curve_id = random.randint(0, len(keys))
         surface_curve = surface_dict[keys[random_curve_id]]
 
-        positive_input = list(np.logspace(0, np.log10(30), num=90))
+        positive_input = list(np.linspace(0, (30), num=90))
         negative_input = []
         for value in reversed(positive_input):
             negative_input.append(-value)
