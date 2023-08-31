@@ -8,12 +8,12 @@ import random
 
 
 learning_rate = 1e-4
-epochs = 10
+epochs = 100
 
 #makes the neural network
 #model = NeuralNetwork()
-#model = torch.load('model.pth')
-model = NeuralOperator()
+model = torch.load('model.pth')
+#model = NeuralOperator()
 
 #takes the argument the user used to find the file
 creep_dict, surface_dict = folder_to_dictionaries(argv[1])
