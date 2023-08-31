@@ -180,11 +180,5 @@ def display_surface_creep_curves():
         plt.close()
     bar.finish()
 
-    creep1 = creep_dict[keys[1]][3]
-    creep0 = creep_dict[keys[0]][3]
-
-    print(len(creep0))
-    
-    print([model(torch.Tensor(creep0))[n]-model(torch.Tensor(creep1))[n] for n in range(90)])
 
 display_surface_creep_curves()
