@@ -34,7 +34,7 @@ class NeuralOperator(nn.Module):
                 y = self.kernels[i][j+1](y)
 
 
-            x_2 = (1/input_number) * self.kernels[i][-1](y)
+            x_2 = self.kernels[i][-1](y)
 
             x = self.activation_function(x_1 + x_2)
         

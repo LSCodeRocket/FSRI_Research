@@ -153,7 +153,7 @@ def display_surface_creep_curves():
         # axes[1].title = (f"Surface {keys[random_curve_id][:-4]}")
         axes[1].plot(full_input, (1/100)*full_output, color='orange')
         axes[1].plot(full_input, (1/100)*full_model, color="seagreen")
-        axes[2].plot(full_input, (1/100)*(np.array(full_model)-np.array(full_model_example)))
+        axes[2].plot(full_input, (1/100)*(np.array(full_model)-np.array(full_output)))
 
         positive_input = list(creep[0])
         negative_input = list(-np.array(positive_input))
