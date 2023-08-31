@@ -5,7 +5,7 @@ import os
 import scipy as sp
 
 
-polynomial_degree_approximation = 10
+polynomial_degree_approximation = 12
 input_number = 120
 
 def import_data_from_filename(filename):

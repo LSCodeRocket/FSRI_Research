@@ -1,6 +1,5 @@
 from make_data_loader import *
 from neural_network import *
-from visualization_neural_network import *
 from sys import argv
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,7 +8,7 @@ import random
 
 
 learning_rate = 1e-4
-epochs = 500
+epochs = 0
 
 #makes the neural network
 #model = NeuralNetwork()

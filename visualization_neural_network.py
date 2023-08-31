@@ -132,8 +132,8 @@ def display_surface_creep_curves():
 
         full_output = np.array(negative_x_output + positive_x_output)
 
-        creep_input = creep_dict[keys[random_curve_id]][0]
-        creep_input_curve = creep_dict[keys[random_curve_id]][1]
+        creep_input_curve = creep_dict[keys[random_curve_id]][0]
+        creep_input = creep_dict[keys[random_curve_id]][1]
         
         creep_fitted_coefficients = np.polyfit(creep_input, creep_input_curve, deg=polynomial_degree_approximation)
 
@@ -161,16 +161,16 @@ def display_surface_creep_curves():
 
         creep_curve = creep_dict[keys[random_curve_id]]
 
-        input_min = min(creep_curve[0])
-        input_max = max(creep_curve[0])
+        input_min = min(creep_curve[1])
+        input_max = max(creep_curve[1])
 
-        positive_input = np.linspace(input_min, input_max, num=len(creep_curve[0]))
+        positive_input = np.linspace(input_min, input_max, num=len(creep_curve[1]))
         negative_input = list(-positive_input)
         negative_input.reverse()
 
         full_input = np.array(negative_input + list(positive_input))
 
-        positive_x_output = list(creep_curve[1])
+        positive_x_output = list(creep_curve[0])
         negative_x_output = positive_x_output
         negative_x_output.reverse()
 
@@ -178,7 +178,8 @@ def display_surface_creep_curves():
 
 
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
-        axes[0].plot( positive_x_output, positive_input, color='blue')
+        axes[0].plot( positive_input, positive_x_output, color='blue')
+        axes[0].plot( positive_input, [creep_func(n) for n in positive_input], color='red')
         axes[0].title.set_text(keys[random_curve_id][:-4])
         fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
         bar.next()
