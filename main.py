@@ -8,7 +8,7 @@ import random
 
 
 learning_rate = 1e-4
-epochs = 10
+epochs = 100
 
 #makes the neural network
 #model = NeuralNetwork()

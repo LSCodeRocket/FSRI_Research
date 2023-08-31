@@ -8,8 +8,8 @@ class NeuralOperator(nn.Module):
         super().__init__()
         #make the layers of the NN
         self.neurons_per_hidden_layer = 100
-        self.hidden_layer_number = 6
-        self.hidden_neurons_in_kernel = 20
+        self.hidden_layer_number = 3
+        self.hidden_neurons_in_kernel = 5
         self.hidden_layers_in_kernel = 3
         self.activation_function = nn.SELU()
 

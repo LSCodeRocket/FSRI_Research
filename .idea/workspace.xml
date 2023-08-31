@@ -6,9 +6,67 @@
   <component name="ChangeListManager">
     <list default="true" id="0cf7a0b5-958f-4ecc-b951-56728762240d" name="Changes" comment="setup graphing, fixed issues with using selenium data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.05Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.05Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.50Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.50Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.90Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N1.90Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N2.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N2.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.30Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.30Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.80Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N4.80Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.30Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.30Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.80Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N5.80Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-2N6.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-2N6.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.30Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.30Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.50Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.50Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.85Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N1.85Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N2.20Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N2.20Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N3.40Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N3.40Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N4.30Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N4.30Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N4.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N4.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N5.10Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N5.10Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N5.20Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N5.20Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-3N6.90Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-3N6.90Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N1.20Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N1.20Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N1.80Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N1.80Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.10Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.10Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.20Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.20Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.50Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N2.50Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.10Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.10Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.40Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.40Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.80Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N3.80Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N4.50Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N4.50Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N4.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N4.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.10Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.10Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.90Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N5.90Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.10Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.10Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.60Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.60Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.90Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N6.90Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-4N7.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-4N7.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.30Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.30Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.35Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.35Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.55Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.55Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.85Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N1.85Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N2.40Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N2.40Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N3.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N3.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.00Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.00Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.20Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.20Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.40Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.40Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.60Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N4.60Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N5.60Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N5.60Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N5.70Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N5.70Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination_curves_model/Edot-5N6.90Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/combination_curves_model/Edot-5N6.90Y.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comparison.png" beforeDir="false" afterPath="$PROJECT_DIR$/comparison.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.pth" beforeDir="false" afterPath="$PROJECT_DIR$/model.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operator_network_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/operator_network_comparison.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output.png" beforeDir="false" afterPath="$PROJECT_DIR$/output.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

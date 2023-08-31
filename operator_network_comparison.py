@@ -51,7 +51,7 @@ def display_comparison_graph():
         positive_x_network_model = list(model(torch.Tensor(creep[3])).detach().numpy())
         negative_x_network_model = []
         for value in reversed(positive_x_network_model):
-            negative_x_newtork_model.append(value)
+            negative_x_network_model.append(value)
         full_model_network = np.array(negative_x_network_model + positive_x_network_model)
 
         positive_x_operator_model = list(operator(torch.Tensor(creep[3])).detach().numpy())
@@ -69,7 +69,7 @@ def display_comparison_graph():
         axes[1].plot(full_input, (1/100)*full_output, color='orange')
         axes[1].plot(full_input, (1/100)*full_model_network, color="seagreen")
         axes[1].plot(full_input, (1/100)*full_model_operator, color="brown")
-        axes[2].plot(full_input, (1/100)*(np.array(full_model)-np.array(full_model_operator)))
+        axes[2].plot(full_input, (1/100)*(np.array(full_model_network)-np.array(full_model_operator)))
         axes[1].title.set_text("Neural Network / Operator Comparison")
 
         positive_input = list(creep[0])
