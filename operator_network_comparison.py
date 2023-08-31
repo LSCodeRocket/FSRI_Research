@@ -25,8 +25,6 @@ def display_comparison_graph():
     input_min = find_maximum_minimum_input(creep_dict)
     input_max = find_minimum_maximum_input(creep_dict)
 
-
-
     for i in range(int(sys.argv[2])):
 
         random_curve_id = random.randint(0, len(keys)-1)
@@ -69,9 +67,13 @@ def display_comparison_graph():
         axes[1].plot(full_input, (1/100)*full_output, color='orange', label='Target (Surface Distribution)')
         axes[1].plot(full_input, (1/100)*full_model_network, color="seagreen", label='Network Output')
         axes[1].title.set_text("Neural Network Result")
+        axes[1].xlabel("Horizontal Distance ($\\myu m$)")
+        axes[1].ylabel("Depth ($\\myu m$)")
         axes[1].legend()
         axes[2].plot(full_input, (1/100)*full_output, color='orange', label="Target (Surface Distribution)")
         axes[2].plot(full_input, (1/100)*full_model_operator, color="brown", label='Operator Output')
+        axes[2].xlabel("Horizontal Distance ($\\myu m$)")
+        axes[2].ylabel("Depth ($\\myu m$)")
         axes[2].title.set_text("Neural Operator Result")
         axes[2].legend()
 
@@ -91,6 +93,8 @@ def display_comparison_graph():
         # axes[0].title = (f"Creep {keys[random_curve_id][:-4]}")
         axes[0].plot( np.array(creep[0]), np.array(creep[1]), color='blue')
         axes[0].title.set_text(keys[random_curve_id][:-4] + " Creep")
+        axes[0].xlabel("Time ($ms$)")
+        axes[0].ylabel("Indenter Depth ($\myu m$)")
 
         fig.savefig(f"comparison_curves/{keys[random_curve_id][:-4]}.png")
         plt.clf()
