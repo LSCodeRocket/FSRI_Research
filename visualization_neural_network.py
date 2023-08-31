@@ -111,6 +111,13 @@ def display_surface_creep_curves():
     input_min = find_maximum_minimum_input(creep_dict)
     input_max = find_minimum_maximum_input(creep_dict)
 
+    creep = creep_dict[keys[0]]
+    positive_x_model = list(model(torch.Tensor(creep[3])).detach().numpy())
+    negative_x_model = []
+    for value in reversed(positive_x_model):
+        negative_x_model.append(value)
+    full_model_example = np.array(negative_x_model + positive_x_model)
+
     for i in range(int(sys.argv[2])):
 
         random_curve_id = random.randint(0, len(keys)-1)
@@ -141,11 +148,12 @@ def display_surface_creep_curves():
 
         plt.cla()
         plt.figure(figsize=(10,6))
-        fig, axes = plt.subplots(1, 2)
+        fig, axes = plt.subplots(1, 3)
         fig.set_figwidth(15)
         # axes[1].title = (f"Surface {keys[random_curve_id][:-4]}")
         axes[1].plot(full_input, full_output, color='orange')
         axes[1].plot(full_input, full_model, color="seagreen")
+        axes[2].plot(full_input, np.array(full_model)-np.array(full_model_example))
 
         positive_input = list(creep[0])
         negative_input = list(-np.array(positive_input))
@@ -167,8 +175,16 @@ def display_surface_creep_curves():
 
         axes[0].title.set_text(keys[random_curve_id][:-4])
         fig.savefig(f"combination_curves_{model_filename[:-4]}/{keys[random_curve_id][:-4]}.png")
+        plt.clf()
         bar.next()
         plt.close()
     bar.finish()
+
+    creep1 = creep_dict[keys[1]][3]
+    creep0 = creep_dict[keys[0]][3]
+
+    print(len(creep0))
+    
+    print([model(torch.Tensor(creep0))[n]-model(torch.Tensor(creep1))[n] for n in range(90)])
 
 display_surface_creep_curves()

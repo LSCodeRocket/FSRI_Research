@@ -95,5 +95,3 @@ for param in model.parameters():
     # print("Weights:" + str(param))
     pass
 
-
-print(model(torch.Tensor(np.linspace(0, 100, num=120))))
