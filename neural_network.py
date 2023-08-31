@@ -42,8 +42,9 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     for batch, (X, y) in enumerate(dataloader):
         # Compute prediction and loss
         X = torch.from_numpy(np.array(X)).float()
-        pred = model(X)
-        loss = loss_fn(torch.Tensor(pred), torch.Tensor(y))
+        pred = model(X).reshape((90, 1))
+        loss = loss_fn(pred, torch.unsqueeze(torch.Tensor(y), 1))
+
 
         # Backpropagation
         loss.backward()
@@ -70,8 +71,7 @@ def test_loop(dataloader, model, loss_fn):
 
             X = torch.from_numpy(np.array(X).reshape(1, input_number)).float()
             pred = model(X)
-            loss_fn(torch.Tensor(pred), torch.Tensor(y))
-            test_loss += loss_fn(torch.Tensor(pred), torch.Tensor(y)).item()
+            test_loss += loss_fn(torch.Tensor(pred), torch.Tensor(y).reshape(1, 90)).item()
 
     test_loss /= num_batches
     print(f"Avg loss: {test_loss:>8f} \n")
