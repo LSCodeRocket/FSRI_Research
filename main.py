@@ -4,14 +4,21 @@ from sys import argv
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+from neuralop.models import TFNO1d
 
+model = TFNO1d(n_modes_height=16, hidden_channels=10,
+                in_channels=1,
+                out_channels=1,
+                factorization='tucker',
+                implementation='factorized',
+                rank=0.05)
 
 
 learning_rate = 1e-4
 epochs = 10
 
 #makes the neural network
-model = NeuralNetwork()
+#model = NeuralNetwork()
 #model = torch.load('model.pth')
 
 #takes the argument the user used to find the file
