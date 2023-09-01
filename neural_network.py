@@ -9,7 +9,7 @@ class NeuralOperator(nn.Module):
         #make the layers of the NN
         self.neurons_per_hidden_layer = 100
         self.hidden_layer_number = 3
-        self.hidden_neurons_in_kernel = 5
+        self.hidden_neurons_in_kernel = 50
         self.hidden_layers_in_kernel = 3
         self.activation_function = nn.SELU()
 
@@ -33,7 +33,7 @@ class NeuralOperator(nn.Module):
             for j in range(self.hidden_layers_in_kernel):
                 y = self.kernels[i][j+1](y)
 
-
+            # sigma ( Wa + b + NN(a) )``
             x_2 = self.kernels[i][-1](y)
 
             x = self.activation_function(x_1 + x_2)
