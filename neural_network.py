@@ -3,7 +3,7 @@ from torch import nn
 import numpy as np
 from make_data_loader import *
 
-class NeuralOperator(nn.Module):
+class NeuralOperatorTypeA(nn.Module):
     def __init__(self):
         super().__init__()
         #make the layers of the NN
@@ -37,6 +37,52 @@ class NeuralOperator(nn.Module):
             x_2 = self.kernels[i][-1](y)
 
             x = self.activation_function(x_1 + x_2)
+        
+        x = self.output_layer(x)
+        return x
+
+class NeuralOperatorTypeB(nn.Module):
+    def __init__(self):
+        super().__init__()
+        #make the layers of the NN
+        self.neurons_per_hidden_layer = 100
+        self.hidden_layer_number = 3
+        self.hidden_neurons_in_kernel = 50
+        self.hidden_variable_number = 3
+        self.hidden_layers_in_kernel = 3
+        self.activation_function = nn.SELU()
+
+        self.kernels = [ [nn.Linear(input_number + 1, self.hidden_neurons_in_kernel)] for n in range((self.hidden_layer_number)) ]
+        for i in range(self.hidden_variable_number):
+            self.kernels[i] = self.kernels[i] + [nn.Linear(self.hidden_neurons_in_kernel, self.hidden_neurons_in_kernel) for j in range(self.hidden_layers_in_kernel)]
+            self.kernels[i] = self.kernels[i] + [nn.Linear(self.hidden_neurons_in_kernel, 1)]
+        
+        self.hidden_layers = [nn.Linear(self.neurons_per_hidden_layer, self.neurons_per_hidden_layer) for i in range(self.hidden_layer_number)]
+        self.input_layer = nn.Linear(input_number + self.hidden_variable_number, self.neurons_per_hidden_layer)
+        self.output_layer = nn.Linear(self.neurons_per_hidden_layer, 90)
+        print("Neural Operator Created.")
+
+    #forward propagation
+    def forward(self, x):
+        xis = torch.zeros(self.hidden_variable_number)
+        xi = torch.zeros(1) 
+        for i in range(self.hidden_variable_number):
+            input_vec = torch.cat((x, xi), 0)
+            y = self.kernels[i][0](input_vec)
+            for j in range(self.hidden_layers_in_kernel):
+                y = self.kernels[i][j+1](y)
+
+            # sigma ( Wa + b + NN(a) )
+            xi_dot = self.kernels[i][-1](y)
+            
+            xi = xi + (1/(input_number-1))*xi_dot
+            xis[i] = xi
+
+        
+        x = self.activation_function(self.input_layer(torch.cat((x, xis), 0)))
+        for i in range(self.hidden_layer_number):
+            x = self.hidden_layers[i](x)
+            x = self.activation_function(x)
         
         x = self.output_layer(x)
         return x
@@ -107,9 +153,9 @@ def test_loop(dataloader, model, loss_fn):
     with torch.no_grad():
         for X, y in dataloader:
 
-            X = torch.from_numpy(np.array(X).reshape(1, input_number)).float()
-            pred = model(X)
-            test_loss += loss_fn(torch.Tensor(pred), torch.Tensor(y).reshape(1, 90)).item()
+            X = torch.from_numpy(np.array(X)).float()
+            pred = model(X).reshape((90,1))
+            test_loss += loss_fn(torch.Tensor(pred), torch.unsqueeze(torch.Tensor(y), 1)).item()
 
     test_loss /= num_batches
     print(f"Avg loss: {test_loss:>8f} \n")

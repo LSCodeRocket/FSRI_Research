@@ -13,7 +13,9 @@ epochs = 100
 #makes the neural network
 #model = NeuralNetwork()
 #model = torch.load('model.pth')
-model = NeuralOperator()
+# You can either choose one of these
+model = NeuralOperatorTypeA() # sigma(Wa + b + NN(a))
+# model = NeuralOperatorTypeB() # xi_dot = g(F, xi)  -> f(F, xis)
 
 #takes the argument the user used to find the file
 creep_dict, surface_dict = folder_to_dictionaries(argv[1])
